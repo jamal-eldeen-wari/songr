@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Albums Page</title>
+</head>
+<body>
+<div>
+
+
+    <form action="/v2/songrs" method="post">
+
+        <label for="title"> Title</label>
+
+        <br>
+
+        <input type="text" id="title" name="title">
+
+        <br>
+
+        <label for="artist"> Artist</label>
+
+        <br>
+
+        <input type="text" id="artist" name="artist">
+
+        <br>
+
+        <label for="songCount"> Song Count </label>
+
+        <br>
+
+        <input type="number" id="songCount" name="songCount">
+
+        <br>
+
+        <label for="length"> Length </label>
+
+        <br>
+
+        <input type="number" id="length" name="length">
+
+        <br>
+
+        <label for="image"> Image URL </label>
+
+        <br>
+
+        <input type="text" id="image" name="image">
+
+        <br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+<tr th:each="Album:${albums}">
+    <td th:text="${Album.title}"></td>
+    <br>
+    <br>
+    <td th:text="${Album.artist}"></td>
+    <br>
+    <br>
+    <td th:text="${Album.songCount}"></td>
+    <br>
+    <br>
+    <td th:text="${Album.length}"></td>
+    <br>
+    <br>
+    <img th:src="${Album.imageURL}" alt="Hi"/>
+    <br>
+    <br>
+</tr>
+
+</body>
+</html>

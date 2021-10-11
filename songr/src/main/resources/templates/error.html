@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Error </title>
@@ -7,5 +7,24 @@
 </head>
 <body>
 <p>Home Page</p>
+<div>
+    <tr th:each="Album:${albums}">
+        <td th:text="${Album.title}"></td>
+        <br>
+        <br>
+        <td th:text="${Album.artist}"></td>
+        <br>
+        <br>
+        <td th:text="${Album.songCount}"></td>
+        <br>
+        <br>
+        <td th:text="${Album.length}"></td>
+        <br>
+        <br>
+        <img th:src="${Album.imageURL}" alt="Hi"/>
+        <br>
+        <br>
+    </tr>
+</div>
 </body>
 </html>
