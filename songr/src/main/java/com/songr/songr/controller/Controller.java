@@ -1,13 +1,17 @@
 package com.songr.songr.controller;
 
+import com.songr.songr.repository.AlbumRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 
 @org.springframework.stereotype.Controller
 public class Controller {
+
+    @Autowired
+    private AlbumRepository albumRepository;
 
 
     @GetMapping("/hello")
@@ -33,6 +37,35 @@ public class Controller {
        model.addAttribute("album",albums);
         return "album";
     }
+
+    @ResponseBody
+    @PostMapping("/v1/songrs")
+    public Album createSong(@RequestBody Album album){
+        Album album1 = albumRepository.save(album);
+        return album1;
+    }
+
+    @GetMapping("/v2/songrs")
+    public String getSong(Model model){
+        model.addAttribute("albums",albumRepository.findAll());
+        return "albums";
+    }
+
+    @PostMapping("/v2/songrs")
+    public RedirectView createNewSong(@ModelAttribute Album album){
+        albumRepository.save(album);
+        return new RedirectView("albums");
+    }
+
+    @GetMapping("/v2/songrs/{artist}")
+    public String findAlbumByArtist(@PathVariable String artist, Model model){
+        Album album = albumRepository.findAlbumByArtist(artist);
+        model.addAttribute("album",album);
+        return "album";
+    }
+
+
+
 
 
 
