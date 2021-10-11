@@ -1,11 +1,28 @@
 package com.songr.songr.controller;
 
+//
+
+//
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Album {
+
     private String title;
     private String artist;
     private int songCount;
     private int length;
     private String imageURL;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    public Album() {
+
+    }
 
     public Album(String title, String artist, int songCount, int length, String imageURL) {
         this.title = title;
@@ -14,6 +31,7 @@ public class Album {
         this.length = length;
         this.imageURL = imageURL;
     }
+
 
     public String getImageURL() {
         return imageURL;
@@ -53,5 +71,12 @@ public class Album {
 
     public void setLength(int length) {
         this.length = length;
+    }
+
+
+
+
+    public Long getId() {
+        return id;
     }
 }
