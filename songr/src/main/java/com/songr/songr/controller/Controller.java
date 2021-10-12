@@ -51,12 +51,24 @@ public class Controller {
         return "albums";
     }
 
-    @PostMapping("/v2/songrs")
-    public RedirectView createNewSong(@ModelAttribute Album album){
-        albumRepository.save(album);
-        return new RedirectView("albums");
-    }
+//    @PostMapping("/v2/songrs")
+//    public RedirectView createNewSong(@ModelAttribute Album album){
+//        albumRepository.save(album);
+//        return new RedirectView("albums");
+//    }
 
+    @PostMapping("/v2/songrs")
+public RedirectView addNewAlbum(@RequestParam (value = "title") String title ,
+                                @RequestParam (value = "artist") String artist,
+                                @RequestParam (value = "songCount") int songCount,
+                                @RequestParam (value = "length") int length,
+                                @RequestParam (value = "imageURL") String imageURL){
+
+    Album albums = new Album(title,artist,songCount,length,imageURL);
+    albumRepository.save(albums);
+    return new RedirectView("/v2/songrs");
+
+}
     @GetMapping("/v2/songrs/{artist}")
     public String findAlbumByArtist(@PathVariable String artist, Model model){
         Album album = albumRepository.findAlbumByArtist(artist);
