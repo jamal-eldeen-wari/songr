@@ -1,5 +1,6 @@
 package com.songr.songr.controller;
 
+import com.songr.songr.model.Album;
 import com.songr.songr.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -26,7 +27,7 @@ public class Controller {
         return "capitalize";
     }
 
-    Album [] albums ={new Album("Long Year","Steve Everett",24,180,"https://f4.bcbits.com/img/0007272500_10.jpg"),
+    Album[] albums ={new Album("Long Year","Steve Everett",24,180,"https://f4.bcbits.com/img/0007272500_10.jpg"),
             new Album("Fake it","Steve Everett",24,180,"https://f4.bcbits.com/img/0007272500_10.jpg"),
             new Album("Never love you","Steve Everett",24,180,"https://f4.bcbits.com/img/0007272500_10.jpg")};
 
@@ -76,10 +77,16 @@ public RedirectView addNewAlbum(@RequestParam (value = "title") String title ,
         return "album";
     }
 
+//    @GetMapping("/v2/songrs")
+//    public String getAlbum(Model model){
+//        model.addAttribute("album",albumRepository.findAll());
+//        return "albums";
+//    }
 
-
-
-
+    @GetMapping("addalbum")
+    public String addAlbum(){
+        return "addalbum";
+    }
 
 
 }
