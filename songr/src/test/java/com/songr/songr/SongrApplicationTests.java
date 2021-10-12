@@ -1,6 +1,6 @@
 package com.songr.songr;
 
-import com.songr.songr.controller.Album;
+import com.songr.songr.model.Album;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,5 +21,7 @@ class SongrApplicationTests {
 		assertEquals(24,album.getSongCount());
 		assertEquals(180, album.getLength());
 	}
+
+	
 
 }
