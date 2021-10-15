@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Albums</title>
-    <link rel="stylesheet" href="style.css">
+<!--    <link rel="stylesheet" href="style.css">-->
 </head>
 <body>
 
 
-<tr th:each="Album:${album}">
-    <td th:text="${Album.title}"></td>
+<tr th:each="Albums:${albums}">
+    <td th:text="${Albums.title}"></td>
     <br>
     <br>
-    <td th:text="${Album.artist}"></td>
+    <td th:text="${Albums.artist}"></td>
     <br>
     <br>
-    <td th:text="${Album.songCount}"></td>
+    <td th:text="${Albums.songCount}"></td>
     <br>
     <br>
-    <td th:text="${Album.length}"></td>
+    <td th:text="${Albums.length}"></td>
     <br>
     <br>
-    <img th:src="${Album.imageURL}" alt="Hi"/>
+    <img th:src="${Albums.imageURL}" alt="Hi"/>
     <br>
     <br>
 </tr>
