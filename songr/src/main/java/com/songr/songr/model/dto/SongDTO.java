@@ -1,43 +1,33 @@
-package com.songr.songr.model;
+package com.songr.songr.model.dto;
 
-import javax.persistence.*;
-
-@Entity
-public class Song {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class SongDTO {
     private String title;
     private String length;
     private  int trackNumber;
+    private String album;
 
-    @ManyToOne
-    @JoinColumn(name = "album_id")
-    private Albums albums;
-
-    public Song() {
+    public String getAlbum() {
+        return album;
     }
 
-    public Song(String title, String length, int trackNumber) {
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public SongDTO() {
+    }
+
+    public SongDTO(String title, String length, int trackNumber, String album) {
         this.title = title;
         this.length = length;
         this.trackNumber = trackNumber;
+        this.album = album;
     }
 
-    public Song(String title, String length, int trackNumber, Albums albums) {
+    public SongDTO(String title, String length, int trackNumber) {
         this.title = title;
         this.length = length;
         this.trackNumber = trackNumber;
-        this.albums = albums;
-    }
-
-    public Albums getAlbum() {
-        return albums;
-    }
-
-    public void setAlbum(Albums albums) {
-        this.albums = albums;
     }
 
     public String getTitle() {
@@ -62,13 +52,5 @@ public class Song {
 
     public void setTrackNumber(int trackNumber) {
         this.trackNumber = trackNumber;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }
